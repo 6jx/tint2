@@ -1,5 +1,6 @@
 project( tint2 )
 cmake_minimum_required( VERSION 2.8.5 )
+cmake_policy(SET CMP0079 NEW)
 
 option( ENABLE_BATTERY "Enable battery status plugin" ON )
 option( ENABLE_TINT2CONF "Enable tint2conf build, a GTK+2 theme configurator for tint2" ON )
@@ -269,7 +270,8 @@ target_link_libraries( tint2 ${X11_LIBRARIES}
                              ${GOBJECT2_LIBRARIES}
 							 ${IMLIB2_LIBRARIES}
 							 ${UNWIND_LIBRARIES}
-							 ${EXECINFO_LIBRARIES} )
+							 ${EXECINFO_LIBRARIES})
+target_link_libraries(tint2conf m)
 if( ENABLE_RSVG )
   target_link_libraries( tint2 ${RSVG_LIBRARIES} )
 endif( ENABLE_RSVG )
